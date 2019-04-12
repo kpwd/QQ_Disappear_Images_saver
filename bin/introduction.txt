@@ -1,0 +1,2 @@
+./pjsz_aarch64 was built on vivo x6 plus
+./pjsz_armv8l was built on mi6
