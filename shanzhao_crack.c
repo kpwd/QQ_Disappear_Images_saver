@@ -94,7 +94,7 @@ int main(int argc, char *argv[]){
 		printf("I am watching this dir: [%s] \n and immediately copy new image to [%s] if it exits.\n",TargetDir,DestnationDir);
 	}
 	while(1){
-		printf("Waiting...\n");
+		//printf("Waiting...\n");
 		length=read( fd,buffer,BUF_LEN );  
 		while ( i < length ) {
 			struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
