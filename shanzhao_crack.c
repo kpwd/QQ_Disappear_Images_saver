@@ -101,7 +101,6 @@ int main(int argc, char *argv[]){
 			i += EVENT_SIZE + event->len;
 			if ( event->len ) {
 				char head[9]={0};
-				
 				char *TargetFileName;
 				TargetFileName=(char *)malloc(strlen(TargetDir)+event->len+1);
 				*(TargetFileName)='\0';
@@ -110,11 +109,10 @@ int main(int argc, char *argv[]){
 				//memcpy(EventFileName,event->name,event->len);
 				printf("TargetFileName: %s\n",TargetFileName);
 				FILE* rfile=fopen(TargetFileName,"r");
-				if(!rfile){
+				if(!(rfile&&fread(head,1,8,rfile)==8)){
 					printf("Can't open TargetFileName!\n");
 					goto CLEAR;
 				}
-				fread(head,1,8,rfile);
 				if(strcmp("ENCRYPT:",head)==0){
 					//printf("Pass it!\n");
 					goto CLEAR_AND_CLOSE_FILES;
